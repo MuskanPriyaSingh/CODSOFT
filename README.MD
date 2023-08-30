@@ -1,3 +1,3 @@
 # CODESOFT PROJECTS
 
-### Live Website: https://muskanpriyasingh.github.io/CodeSoft/
+### Live Website: https://muskanpriyasingh.github.io/CODESOFT/
