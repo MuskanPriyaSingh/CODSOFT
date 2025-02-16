@@ -37,12 +37,39 @@ ul{
     display: block;
     padding: 0 30px;
     opacity: 1;
+    position: fixed;
+    left: 270px;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 0;
+    overflow-y: auto;
+    overflow-x: hidden;
+    transition: all 0.3s ease;
+}
+.section.back-section
+{
+    z-index: 1;
+}
+.section.active
+{
+    z-index: 2;
+    opacity: 1;
+    animation: slideSection 1s ease;
+}
+@keyframes slideSection 
+{
+    0%
+    {
+        transform: translateX(100%);
+    } 
+    100%
+    {
+        transform: translateX(0%);
+    }   
 }
 .hidden{
    display: none !important; 
-}
-.main-content{
-    padding: 270px;
 }
 .padd-15{
     padding-left: 15px;
@@ -90,8 +117,8 @@ ul{
 .row{
     display: flex;
     flex-wrap: wrap;
-    margin-left: -5px;
-    margin-right: -35px;
+    margin-left: -15px;
+    margin-right: -15px;
     position: relative;
 }
 .btn{
@@ -127,6 +154,7 @@ ul{
     justify-content: center;
     align-items: center;
     z-index: 10;
+    transition: all 0.3s ease;
 }
 .aside .logo{
     position: absolute;
@@ -179,6 +207,7 @@ ul{
     display: none;
     text-align: center;
     justify-content: center;
+    transition: all 0.3s ease;
 }
 .aside .nav-toggler span{
     height: 2px;
@@ -196,6 +225,11 @@ ul{
     top: -6px;
     left: 0;
 }
+.aside .nav-toggler.open span::before
+{
+    transform: rotate(45deg);
+    top: 0;
+}
 .aside .nav-toggler span::after{
     content: '';
     height: 2px;
@@ -205,6 +239,11 @@ ul{
     top: 6px;
     left: 0;
 }
+.aside .nav-toggler.open span::after
+{
+    transform: rotate(-45deg);
+    top: 0;
+}
 .aside .nav{
     margin-top: 50px;
 }
@@ -213,7 +252,7 @@ ul{
     display: block;
 }
 .aside .nav li a{
-    font-size: 22px;
+    font-size: 16px;
     font-weight: 600;
     display: block;
     border-bottom: 1px solid var(--bg-black-50);
@@ -261,7 +300,7 @@ h3.my-profession{
 }
 .home .home-img{
     flex: 0 0 40%;
-    max-width: 70%;
+    max-width: 40%;
     text-align: center;
     position: relative;
 }
@@ -340,7 +379,6 @@ h3.my-profession{
     margin-top: 30px;
 }
 .about .about-content .personal-info .buttons .btn{
-    margin-right: 15px;
     margin-top: 10px;
 }
 .btn-div {
@@ -486,6 +524,7 @@ h3.my-profession{
 }
 .portfolio .portfolio-item-inner .portfolio-img img{
     width: 100%;
+    height: 165px;
     display: block;
 }
 
@@ -574,41 +613,70 @@ h3.my-profession{
 .footer .ftr span {
     font-weight: 600;
 }
-@media (max-width:1199px){
-    .aside{
+
+@media (max-width:1199px)
+{
+    .aside
+    {
         left: -270px;
     }
-    .main-content{
-        padding-left: 0;
+    .aside.open
+    {
+        left: 0;
     }
-    .about .about-content .personal-info .info-item p span{
+    .aside .nav-toggler
+    {
+        display: flex;
+        left: 30px;
+    }
+    .aside .nav-toggler.open
+    {
+        left: 300px;
+    }
+    .section
+    {
+        left: 0;
+    }
+    .section.open
+    {
+        left: 270px;
+    }
+    .about .about-content .personal-info .info-item p span
+    {
         display: block;
         margin-left: 0;
     }
 }
-@media (max-width:991px){
+@media (max-width:991px)
+{
     .contact .contact-info-item,
-    .portfolio .portfolio-item{
+    .portfolio .portfolio-item, 
+    .service .service-item
+    {
         flex: 0 0 50%;
-        margin-left: 50%;
+        max-width: 50%;
     }
-    .home .home-info{
+    .home .home-info
+    {
         flex: 0 0 100%;
         max-width: 100%;
     }
-    .home .home-img{
+    .home .home-img
+    {
         display: none;
-        text-align: center;
     }
 }
-@media (max-width:767px){
+@media (max-width:767px)
+{
     .contact .contact-form .col-6,
     .contact .contact-info-item,
     .portfolio .portfolio-item,
+    .service .service-item,
     .about .about-content .experience,
     .about .about-content .education,
     .about .about-content .skills,
-    .about .about-content .personal-info{
+    .about .about-content .personal-info
+    {
         flex: 0 0 100%;
         max-width: 100%;
     }
